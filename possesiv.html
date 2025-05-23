@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Possessivspiel: Practice German Possessive Articles</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Possessivspiel</h1>
+    <p class="subtitle">Finden Sie den richtigen Possesivartikel mit Hilfe der Tabelle</p>
+    
+    <div id="prompt-area">
+      <h3>Question</h3>
+      <p id="q-sentence">Fill in the blank: <strong>___</strong> Hund ist sehr laut.</p>
+      <p id="q-hint">Hint: "my" dog, masculine, Nominative</p>
+      <p><strong>Click the correct cell in the table!</strong></p>
+    </div>
+
+    <div id="info-area">
+      <p>Score: <span id="score">0</span> | Lives: <span id="lives">5</span> | Remaining: <span id="remaining-cells">0</span></p>
+      <div id="message"></div>
+    </div>
+
+    <div id="game-board-container">
+      <table id="article-table">
+        <thead>
+          <tr>
+            <th rowspan="2" class="pronoun-header">Pronoun</th>
+            <th colspan="4">Nominative</th>
+            <th colspan="4">Accusative</th>
+            <th colspan="4">Dative</th>
+          </tr>
+          <tr>
+            <th class="case-gender-header" data-case="Nominative" data-gender="masculine">Masculine</th>
+            <th class="case-gender-header" data-case="Nominative" data-gender="feminine">Feminine</th>
+            <th class="case-gender-header" data-case="Nominative" data-gender="neutral">Neutral</th>
+            <th class="case-gender-header" data-case="Nominative" data-gender="plural">Plural</th>
+            <th class="case-gender-header" data-case="Accusative" data-gender="masculine">Masculine</th>
+            <th class="case-gender-header" data-case="Accusative" data-gender="feminine">Feminine</th>
+            <th class="case-gender-header" data-case="Accusative" data-gender="neutral">Neutral</th>
+            <th class="case-gender-header" data-case="Accusative" data-gender="plural">Plural</th>
+            <th class="case-gender-header" data-case="Dative" data-gender="masculine">Masculine</th>
+            <th class="case-gender-header" data-case="Dative" data-gender="feminine">Feminine</th>
+            <th class="case-gender-header" data-case="Dative" data-gender="neutral">Neutral</th>
+            <th class="case-gender-header" data-case="Dative" data-gender="plural">Plural</th>
+          </tr>
+        </thead>
+        <tbody id="article-table-body"></tbody>
+      </table>
+    </div>
+
+    <button id="restart-button" aria-label="Restart Game">Restart Game</button>
+
+    <div id="game-rules-display">
+      <h3>How to Play</h3>
+      <ol>
+        <li><strong>Read the Sentence:</strong> A sentence with a blank and a hint (e.g., "my" dog, masculine) is shown above.</li>
+        <li><strong>Find the Cell:</strong> Locate the cell in the table that matches the possessive article for the sentence.</li>
+        <li><strong>Click:</strong> Click the cell you think is correct.
+          <ul>
+            <li><strong>Correct:</strong> The cell turns green, you earn points, and a new sentence appears.</li>
+            <li><strong>Incorrect ("Mine"):</strong> The cell turns red, reveals its article, you lose a life, and the sentence stays.</li>
+          </ul>
+        </li>
+        <li><strong>Goal:</strong> Solve all cells in the table.</li>
+        <li><strong>Game Over:</strong> The game ends if you run out of lives.</li>
+      </ol>
+    </div>
+
+    <audio id="correct-sound" src="correct.mp3"></audio>
+    <audio id="incorrect-sound" src="incorrect.mp3"></audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

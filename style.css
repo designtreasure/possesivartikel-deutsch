@@ -1,0 +1,332 @@
+/* Import Roboto font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* MD3 Color Palette (example: blue-based theme) */
+/* Generated using Material Theme Builder: https://m3.material.io/theme-builder */
+:root {
+    /* Primary */
+    --md-sys-color-primary: #0056b3; /* Primary color (blue) */
+    --md-sys-color-on-primary: #ffffff; /* Text/icon on primary */
+    --md-sys-color-primary-container: #d6eaff; /* Lighter primary variant */
+    --md-sys-color-on-primary-container: #001e43; /* Text on primary container */
+
+    /* Secondary */
+    --md-sys-color-secondary: #28a745; /* Green for correct feedback */
+    --md-sys-color-on-secondary: #ffffff;
+    --md-sys-color-secondary-container: #d4edda; /* Light green for correct cells */
+    --md-sys-color-on-secondary-container: #155724;
+
+    /* Error (for incorrect feedback) */
+    --md-sys-color-error: #dc3545;
+    --md-sys-color-on-error: #ffffff;
+    --md-sys-color-error-container: #f8d7da;
+    --md-sys-color-on-error-container: #721c24;
+
+    /* Surface */
+    --md-sys-color-surface: #ffffff; /* Main background */
+    --md-sys-color-on-surface: #333333; /* Text on surface */
+    --md-sys-color-surface-container: #f8f9fa; /* Slightly elevated surface (e.g., table headers) */
+    --md-sys-color-on-surface-variant: #555555; /* Secondary text */
+
+    /* Elevation shadows */
+    --md-sys-elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px rgba(0, 0, 0, 0.15);
+    --md-sys-elevation-2: 0px 2px 4px rgba(0, 0, 0, 0.3), 0px 1px 8px rgba(0, 0, 0, 0.15);
+
+    /* Shapes */
+    --md-sys-shape-corner-medium: 12px; /* Cards, containers */
+    --md-sys-shape-corner-small: 8px; /* Buttons */
+}
+
+/* Reset and base styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 16px; /* MD3 spacing: 16dp */
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background: var(--md-sys-color-surface);
+    padding: 24px; /* MD3: 24dp padding for cards */
+    border-radius: var(--md-sys-shape-corner-medium);
+    box-shadow: var(--md-sys-elevation-1);
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.container.game-won {
+    background: var(--md-sys-color-secondary-container);
+}
+
+.container.game-lost {
+    background: var(--md-sys-color-error-container);
+}
+
+/* Typography: MD3 Headline Small for h1, Body Large for subtitle */
+h1 {
+    font-size: 28px; /* MD3 Headline Small */
+    font-weight: 500;
+    line-height: 36px;
+    color: var(--md-sys-color-primary);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 18px; /* MD3 Body Large */
+    font-weight: 400;
+    color: var(--md-sys-color-on-surface-variant);
+    margin-bottom: 24px;
+}
+
+/* Prompt area: MD3 Card */
+#prompt-area {
+    background-color: var(--md-sys-color-surface-container);
+    border-radius: var(--md-sys-shape-corner-medium);
+    padding: 16px;
+    margin-bottom: 24px;
+    text-align: left;
+    box-shadow: var(--md-sys-elevation-1);
+}
+
+#prompt-area h3 {
+    font-size: 20px; /* MD3 Title Medium */
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+    margin: 0 0 8px 0;
+}
+
+#q-sentence strong {
+    color: var(--md-sys-color-primary);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+#q-hint {
+    color: var(--md-sys-color-secondary);
+    font-size: 14px; /* MD3 Body Medium */
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* Info area */
+#info-area {
+    margin-bottom: 24px;
+    font-size: 16px; /* MD3 Body Large */
+}
+
+#message {
+    min-height: 24px;
+    font-size: 16px; /* MD3 Body Medium */
+    font-weight: 500;
+    color: var(--md-sys-color-primary);
+}
+
+#message.correct {
+    color: var(--md-sys-color-secondary);
+}
+
+#message.incorrect {
+    color: var(--md-sys-color-error);
+}
+
+/* Table: MD3 Surface with Elevation */
+#game-board-container {
+    overflow-x: auto;
+    margin-bottom: 24px;
+}
+
+#article-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px; /* MD3 Body Medium */
+    background-color: var(--md-sys-color-surface);
+    box-shadow: var(--md-sys-elevation-1);
+    
+}
+
+#article-table th,
+#article-table td {
+    border: 1px solid var(--md-sys-color-on-surface-variant);
+    padding: 8px;
+    text-align: center;
+    min-width: 60px;
+    height: 40px; /* Slightly taller for touch targets */
+}
+
+#article-table th {
+    background-color: var(--md-sys-color-surface-container);
+    font-weight: 700; /* MD3 Label Large */
+    font-size: 14px;
+}
+
+#article-table th.highlighted {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+#article-table tbody tr td:first-child {
+    font-weight: 700;
+    background-color: var(--md-sys-color-surface-container);
+    text-align: left;
+    padding-left: 12px;
+    cursor: default;
+}
+
+#article-table tbody tr td:first-child.highlighted {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+/* Game cells */
+.game-cell {
+    cursor: pointer;
+    background-color: var(--md-sys-color-primary-container);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    position: relative; /* For ripple effect */
+    border-radius: 4px; /* MD3 small shape for cells */
+}
+
+.game-cell:not(.solved):not(.mistake-flash):hover {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    transform: scale(1.05);
+}
+
+.game-cell .cell-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-weight: 500;
+    font-size: 14px; /* MD3 Body Medium */
+}
+
+.game-cell.unsolved .cell-content {
+    color: var(--md-sys-color-on-primary-container);
+}
+
+.game-cell.solved {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    cursor: default;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.game-cell.solved:hover {
+    transform: none;
+}
+
+.game-cell.mistake-flash {
+    background-color: var(--md-sys-color-error-container);
+    color: var(--md-sys-color-on-error-container);
+    cursor: default;
+    animation: bombBlast 0.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* MD3 Ripple effect for clicks */
+.game-cell::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.game-cell:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.2s ease;
+}
+
+/* Bomb blast animation for incorrect clicks */
+@keyframes bombBlast {
+    0% {
+        transform: scale(1);
+        background-color: var(--md-sys-color-error-container);
+    }
+    50% {
+        transform: scale(1.1);
+        background-color: var(--md-sys-color-error);
+    }
+    100% {
+        transform: scale(1);
+        background-color: var(--md-sys-color-error-container);
+    }
+}
+
+/* Restart button: MD3 Filled Button */
+#restart-button {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    padding: 10px 24px;
+    border: none;
+    border-radius: var(--md-sys-shape-corner-small);
+    cursor: pointer;
+    font-size: 14px; /* MD3 Label Large */
+    font-weight: 500;
+    text-transform: uppercase;
+    box-shadow: var(--md-sys-elevation-1);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#restart-button:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    box-shadow: var(--md-sys-elevation-2);
+}
+
+#restart-button:active {
+    background-color: var(--md-sys-color-primary);
+}
+
+/* Game rules: MD3 Card */
+#game-rules-display {
+    margin-top: 24px;
+    padding: 16px;
+    background-color: var(--md-sys-color-surface-container);
+    border-radius: var(--md-sys-shape-corner-medium);
+    text-align: left;
+    box-shadow: var(--md-sys-elevation-1);
+}
+
+#game-rules-display h3 {
+    font-size: 20px; /* MD3 Title Medium */
+    font-weight: 500;
+    margin-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+    #article-table {
+        font-size: 12px; /* Smaller for mobile */
+    }
+    #article-table th,
+    #article-table td {
+        min-width: 50px;
+        padding: 6px;
+    }
+    .container {
+        padding: 16px;
+    }
+    #prompt-area {
+        padding: 12px;
+    }
+    #restart-button {
+        padding: 8px 16px;
+    }
+}
